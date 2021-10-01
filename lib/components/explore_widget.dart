@@ -55,10 +55,10 @@ class ExploreWidget extends StatelessWidget {
                 children: [
                   Positioned(
                       top: realH(65 + (-5 * currentExplorePercent)),
-                      left: realW(49 + (91 - 49) * currentExplorePercent),
+                      left: realW(30 + (91 - 49) * currentExplorePercent),
                       child: Text(
-                        "Explore",
-                        style: TextStyle(color: Colors.white, fontSize: realW(18 + (32 - 18) * currentExplorePercent)),
+                        "Choose The City",
+                        style: TextStyle(color: Colors.white, fontSize: realW(15 + (32 - 18) * currentExplorePercent)),
                       )),
                   Positioned(
                       top: realH(20 + (60 - 20) * currentExplorePercent),
@@ -77,10 +77,18 @@ class ExploreWidget extends StatelessWidget {
                         onTap: () {
                           animateExplore(false);
                         },
-                        child: Image.asset(
-                          "assets/arrow.png",
-                          width: realH(35),
-                          height: realH(35),
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              "assets/arrow.png",
+                              width: realH(35),
+                              height: realH(35),
+                            ),
+
+
+
+
+                          ],
                         ),
                       )),
                 ],

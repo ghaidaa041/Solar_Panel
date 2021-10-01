@@ -132,10 +132,6 @@ class _GoogleMapState extends State<GoogleMapPage> with TickerProviderStateMixin
         height: screenHeight,
         child: Stack(
           children: <Widget>[
-//            Container(
-//              color: Colors.yellow,
-//
-//            ),
             Image.asset(
               "assets/map.png",
               width: screenWidth,
@@ -166,10 +162,6 @@ class _GoogleMapState extends State<GoogleMapPage> with TickerProviderStateMixin
                   ),
             //explore content
 
-            //recent search
-            RecentSearchWidget(
-              currentSearchPercent: currentSearchPercent,
-            ),
             //search menu background
             offsetSearch != 0
                 ? Positioned(
@@ -190,24 +182,7 @@ class _GoogleMapState extends State<GoogleMapPage> with TickerProviderStateMixin
                 : const Padding(
                     padding: const EdgeInsets.all(0),
                   ),
-            //search menu
-            SearchMenuWidget(
-              currentSearchPercent: currentSearchPercent,
-            ),
-//            search
-            SearchWidget(
-              currentSearchPercent: currentSearchPercent,
-              currentExplorePercent: currentExplorePercent,
-              isSearchOpen: isSearchOpen,
-              animateSearch: animateSearch,
-              onHorizontalDragUpdate: onSearchHorizontalDragUpdate,
-              onPanDown: () => animationControllerSearch?.stop(),
-            ),
-            //search back
-            SearchBackWidget(
-              currentSearchPercent: currentSearchPercent,
-              animateSearch: animateSearch,
-            ),
+            //search
             Positioned(
               bottom: realH(53),
               left: realW(-71 * (currentExplorePercent + currentSearchPercent)),

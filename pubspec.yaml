@@ -50,6 +50,9 @@ flutter:
      - search.png
      - avatar.png
      - assets/POWER_Point_Climatology_023d8859N_045d0792E_LST.json
+     - one.jpg
+     - two.jpg
+     - three.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
