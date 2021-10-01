@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 
 import 'components/components.dart';
 import 'helper/ui_helper.dart';
@@ -121,6 +122,8 @@ class _GoogleMapState extends State<GoogleMapPage> with TickerProviderStateMixin
       });
     animationControllerMenu.forward();
   }
+  String valueChoose2;
+  List ListItem2 = ['Jeddah','Makkah','Riyadh','Dammam'];
 
   @override
   Widget build(BuildContext context) {
@@ -133,20 +136,90 @@ class _GoogleMapState extends State<GoogleMapPage> with TickerProviderStateMixin
         child: Stack(
           children: <Widget>[
             Image.asset(
-              "assets/map.png",
+              'assets/map.png',
               width: screenWidth,
               height: screenHeight,
               fit: BoxFit.cover,
             ),
-            //explore
-            ExploreWidget(
-              currentExplorePercent: currentExplorePercent,
-              currentSearchPercent: currentSearchPercent,
-              animateExplore: animateExplore,
-              isExploreOpen: isExploreOpen,
-              onVerticalDragUpdate: onExploreVerticalUpdate,
-              onPanDown: () => animationControllerExplore?.stop(),
+            Container(
+              color: Colors.black26,
+              child: Center(
+                child: Container(
+//                color: Colors.white70,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    color: Colors.white70,
+                  ),
+                  width:screenWidth / 1.1,
+                  height:screenHeight /1.8 ,
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 60 ),
+                        child: DropdownButton(
+                          hint: Text('select the city' , style: TextStyle(color: Colors.black , fontWeight: FontWeight.bold, fontSize: 18)),
+                          value: valueChoose2,
+                          onChanged: (newValue){
+                            setState(() {
+                              valueChoose2 = newValue ;
+                            });
+                          },
+                          items: ListItem2.map((valueItem) {
+                            return DropdownMenuItem(
+                              value: valueItem,
+                              child: Text(valueItem , style: TextStyle(color: Colors.black , fontWeight: FontWeight.bold, fontSize: 18)),
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                      SizedBox(height: 20,),
+                      Image.asset('assets/Stat.png' , width:screenWidth/1.3 ,),
+                      SizedBox(height: 20,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("Feels Like:\t" ,  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15) ),
+                              Text("34 C" ,  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15) ),
+                            ],
+                          ),
+                          SizedBox(width: 15,),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("Humidity:\t" ,  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15) ),
+                              Text("9%" ,  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15) ),
+                            ],
+                          ),
+                          SizedBox(width: 15,),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("Precipitation Chance:\t" ,  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15) ),
+                              Text("2%" ,  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15) ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 20,),
+                      Text("The average of sunlight is: \t 50W  " ,  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15) ),
+
+                    ],
+                  ),
+                ),
+              ),
             ),
+            //explore
+//            ExploreWidget(
+//              currentExplorePercent: currentExplorePercent,
+//              currentSearchPercent: currentSearchPercent,
+//              animateExplore: animateExplore,
+//              isExploreOpen: isExploreOpen,
+//              onVerticalDragUpdate: onExploreVerticalUpdate,
+//              onPanDown: () => animationControllerExplore?.stop(),
+//            ),
             //blur
             offsetSearch != 0
                 ? BackdropFilter(

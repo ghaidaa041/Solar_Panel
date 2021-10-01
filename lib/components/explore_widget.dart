@@ -3,14 +3,10 @@ import 'package:flutter_challenge_googlemaps/helper/ui_helper.dart';
 
 class ExploreWidget extends StatelessWidget {
   final double currentSearchPercent;
-
   final double currentExplorePercent;
-
   final Function(bool) animateExplore;
-
   final Function(DragUpdateDetails) onVerticalDragUpdate;
   final Function() onPanDown;
-
   final bool isExploreOpen;
 
   const ExploreWidget(
@@ -84,10 +80,6 @@ class ExploreWidget extends StatelessWidget {
                               width: realH(35),
                               height: realH(35),
                             ),
-
-
-
-
                           ],
                         ),
                       )),
