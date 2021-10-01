@@ -1,10 +1,13 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_challenge_googlemaps/components/about_panels.dart';
+import 'package:flutter_challenge_googlemaps/components/calculate_power.dart';
 import 'package:flutter_challenge_googlemaps/helper/ui_helper.dart';
+import 'package:flutter_challenge_googlemaps/home_page.dart';
 
 /// Drawer Menu
 class MenuWidget extends StatelessWidget {
-  final menuItems = ['Home', 'Saved', 'Timeline', 'Contributions', 'Messages', 'Sharing', 'Drive Mode'];
-
   final num currentMenuPercent;
   final Function(bool) animateMenu;
 
@@ -57,15 +60,6 @@ class MenuWidget extends StatelessWidget {
                                     ),
                                   ),
                                   Positioned(
-                                    left: realW(60),
-                                    bottom: realH(18),
-                                    child: Image.asset(
-                                      "assets/lable.png",
-                                      width: realH(72),
-                                      height: realH(72),
-                                    ),
-                                  ),
-                                  Positioned(
                                     left: realW(135),
                                     top: realH(110),
                                     child: DefaultTextStyle(
@@ -75,34 +69,8 @@ class MenuWidget extends StatelessWidget {
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: <Widget>[
                                           Text(
-                                            "implemented by ditclear",
+                                            "User Name",
                                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: realW(18)),
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.symmetric(vertical: realH(11.0)),
-                                            child: FittedBox(
-                                              fit: BoxFit.scaleDown,
-                                              child: Text.rich(
-                                                TextSpan(
-                                                  text: "https://github.com/ditclear",
-                                                  style: TextStyle(
-                                                      fontSize: realW(16), decoration: TextDecoration.underline),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Row(
-                                            children: <Widget>[
-                                              Text(
-                                                "公众号：ditclear",
-                                                style: TextStyle(fontSize: realW(14)),
-                                              ),
-                                              Icon(
-                                                Icons.arrow_right,
-                                                color: Colors.white,
-                                                size: realH(30),
-                                              )
-                                            ],
                                           ),
                                         ],
                                       ),
@@ -113,29 +81,51 @@ class MenuWidget extends StatelessWidget {
                             ),
                           ),
                           SliverPadding(
-                            padding: EdgeInsets.only(top: realH(34), bottom: realH(50), right: realW(37)),
-                            sliver: SliverFixedExtentList(
-                              itemExtent: realH(56),
-                              delegate: new SliverChildBuilderDelegate((BuildContext context, int index) {
-                                //创建列表项
-                                return Container(
-                                  width: realW(321),
-                                  alignment: Alignment.centerLeft,
-                                  padding: EdgeInsets.only(left: realW(20)),
-                                  decoration: index == 0
-                                      ? BoxDecoration(
-                                          color: Color(0xFF379BF2).withOpacity(0.2),
-                                          borderRadius: BorderRadius.only(
-                                              topRight: Radius.circular(realW(50)),
-                                              bottomRight: Radius.circular(realW(50))))
-                                      : null,
-                                  child: Text(
-                                    menuItems[index],
-                                    style:
-                                        TextStyle(color: index == 0 ? Colors.blue : Colors.black, fontSize: realW(20)),
-                                  ),
-                                );
-                              }, childCount: menuItems.length),
+                            padding: EdgeInsets.only(left: realW(20)),
+                            sliver: SliverToBoxAdapter(
+                              child: ListTile(
+                                title: Text(
+                                  'Home',
+                                  style: TextStyle(color: Colors.black, fontSize: realW(20)),
+                                ),
+                                onTap: () {
+                                  Navigator.push(context, MaterialPageRoute <void> (
+                                      builder: (BuildContext context) => GoogleMapPage()
+                                  ));
+                                },
+                              ),
+                            ),
+                          ),
+                          SliverPadding(
+                            padding: EdgeInsets.only(left: realW(20)),
+                            sliver: SliverToBoxAdapter(
+                              child: ListTile(
+                                title: Text(
+                                  'About Solar Panels',
+                                  style: TextStyle(color: Colors.black, fontSize: realW(20)),
+                                ),
+                                onTap: () {
+                            Navigator.push(context, MaterialPageRoute <void> (
+                            builder: (BuildContext context) => about_panels()
+                            ));
+                            },
+                              ),
+                            ),
+                          ),
+                          SliverPadding(
+                            padding: EdgeInsets.only(left: realW(20)),
+                            sliver: SliverToBoxAdapter(
+                              child: ListTile(
+                                title: Text(
+                                  'Calculate The Power',
+                                  style: TextStyle(color: Colors.black, fontSize: realW(20)),
+                                ),
+                                onTap: () {
+                                  Navigator.push(context, MaterialPageRoute <void> (
+                                      builder: (BuildContext context) => CalculatePower()
+                                  ));
+                                },
+                              ),
                             ),
                           ),
                           SliverPadding(

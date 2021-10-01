@@ -132,6 +132,10 @@ class _GoogleMapState extends State<GoogleMapPage> with TickerProviderStateMixin
         height: screenHeight,
         child: Stack(
           children: <Widget>[
+//            Container(
+//              color: Colors.yellow,
+//
+//            ),
             Image.asset(
               "assets/map.png",
               width: screenWidth,
@@ -161,9 +165,7 @@ class _GoogleMapState extends State<GoogleMapPage> with TickerProviderStateMixin
                     padding: const EdgeInsets.all(0),
                   ),
             //explore content
-            ExploreContentWidget(
-              currentExplorePercent: currentExplorePercent,
-            ),
+
             //recent search
             RecentSearchWidget(
               currentSearchPercent: currentSearchPercent,
@@ -192,7 +194,7 @@ class _GoogleMapState extends State<GoogleMapPage> with TickerProviderStateMixin
             SearchMenuWidget(
               currentSearchPercent: currentSearchPercent,
             ),
-            //search
+//            search
             SearchWidget(
               currentSearchPercent: currentSearchPercent,
               currentExplorePercent: currentExplorePercent,
@@ -206,44 +208,6 @@ class _GoogleMapState extends State<GoogleMapPage> with TickerProviderStateMixin
               currentSearchPercent: currentSearchPercent,
               animateSearch: animateSearch,
             ),
-            //layer button
-            MapButton(
-              currentExplorePercent: currentExplorePercent,
-              currentSearchPercent: currentSearchPercent,
-              bottom: 243,
-              offsetX: -71,
-              width: 71,
-              height: 71,
-              isRight: false,
-              icon: Icons.layers,
-            ),
-            //directions button
-            MapButton(
-              currentSearchPercent: currentSearchPercent,
-              currentExplorePercent: currentExplorePercent,
-              bottom: 243,
-              offsetX: -68,
-              width: 68,
-              height: 71,
-              icon: Icons.directions,
-              iconColor: Colors.white,
-              gradient: const LinearGradient(colors: [
-                Color(0xFF59C2FF),
-                Color(0xFF1270E3),
-              ]),
-            ),
-            //my_location button
-            MapButton(
-              currentSearchPercent: currentSearchPercent,
-              currentExplorePercent: currentExplorePercent,
-              bottom: 148,
-              offsetX: -68,
-              width: 68,
-              height: 71,
-              icon: Icons.my_location,
-              iconColor: Colors.blue,
-            ),
-            //menu button
             Positioned(
               bottom: realH(53),
               left: realW(-71 * (currentExplorePercent + currentSearchPercent)),
